@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package ricardAlgo;
+
+option go_package = "a4/grpc/proto";
+
+// Empty message
+message Empty {}
+
+// Request for critical section
+message RequestMsg {
+  int64 timestamp = 1;
+  int32 node_id = 2;
+}
+
+// Reply granting permission
+message ReplyMsg {
+  int64 timestamp = 1;
+  int32 node_id = 2;
+}
+
+service RicardAlgo {
+  rpc Request(RequestMsg) returns (ReplyMsg);
+  rpc Reply(ReplyMsg) returns (Empty);
+}
